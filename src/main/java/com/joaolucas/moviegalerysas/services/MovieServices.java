@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.joaolucas.moviegalerysas.config.Logger;
 import com.joaolucas.moviegalerysas.models.Movie;
 import com.joaolucas.moviegalerysas.repositories.MovieRepository;
 import com.joaolucas.moviegalerysas.services.interfaces.IMovieServices;
@@ -23,6 +24,9 @@ public class MovieServices implements IMovieServices {
     @Autowired
     ObjectMapper objectMapper;
 
+    @Autowired
+    Logger logger;
+
     public MovieServices(MovieRepository movieRepository, ObjectMapper objectMapper){
         this.movieRepository = movieRepository;
         this.objectMapper = objectMapper;
@@ -39,7 +43,6 @@ public class MovieServices implements IMovieServices {
 
         }catch (Exception ex){
 
-            //Logar exeption
             return null;
         }
     }
