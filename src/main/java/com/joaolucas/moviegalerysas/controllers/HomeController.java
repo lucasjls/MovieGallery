@@ -1,5 +1,6 @@
 package com.joaolucas.moviegalerysas.controllers;
 
+import com.joaolucas.moviegalerysas.config.Logger;
 import com.joaolucas.moviegalerysas.models.Movie;
 import com.joaolucas.moviegalerysas.services.MovieServices;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,9 @@ public class HomeController {
     @Autowired
     MovieServices movieServices;
 
+    @Autowired
+    Logger logger;
+
     public HomeController(MovieServices movieServices){
         this.movieServices = movieServices;
     }
@@ -26,7 +30,6 @@ public class HomeController {
     public List<Movie> getPopularMovies(){
 
         return movieServices.getPopularMovies();
-
     }
 }
 
