@@ -1,7 +1,10 @@
 package com.joaolucas.moviegalerysas.services.interfaces;
 
-public interface MovieServices {
+import com.joaolucas.moviegalerysas.models.Movie;
 
-    String getPopularMovies();
-    
+import java.util.ArrayList;
+
+public interface IMovieServices {
+
+    ArrayList<Movie> getPopularMovies();
 }
