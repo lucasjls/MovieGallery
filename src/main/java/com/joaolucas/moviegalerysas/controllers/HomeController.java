@@ -1,8 +1,9 @@
 package com.joaolucas.moviegalerysas.controllers;
 
 import com.joaolucas.moviegalerysas.config.Logger;
+import com.joaolucas.moviegalerysas.config.interfaces.ILogger;
 import com.joaolucas.moviegalerysas.models.Movie;
-import com.joaolucas.moviegalerysas.services.MovieServices;
+import com.joaolucas.moviegalerysas.services.interfaces.IMovieServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,19 +17,20 @@ import java.util.List;
 public class HomeController {
 
     @Autowired
-    MovieServices movieServices;
+    IMovieServices movieServices;
 
     @Autowired
-    Logger logger;
+    ILogger logger;
 
-    public HomeController(MovieServices movieServices){
+    public HomeController(IMovieServices movieServices, ILogger logger){
         this.movieServices = movieServices;
+        this.logger = logger;
     }
 
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public List<Movie> getPopularMovies(){
-
+        logger.info("getPopularMovies: Popular movies returned");
         return movieServices.getPopularMovies();
     }
 }

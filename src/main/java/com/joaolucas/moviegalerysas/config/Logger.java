@@ -2,7 +2,9 @@ package com.joaolucas.moviegalerysas.config;
 
 import com.joaolucas.moviegalerysas.config.interfaces.ILogger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
+@Component
 public class Logger implements ILogger {
 
     private final org.slf4j.Logger logger;
