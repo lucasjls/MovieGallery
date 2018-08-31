@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.joaolucas.moviegalerysas.config.Logger;
+import com.joaolucas.moviegalerysas.config.interfaces.ILogger;
 import com.joaolucas.moviegalerysas.models.Movie;
-import com.joaolucas.moviegalerysas.repositories.MovieRepository;
+import com.joaolucas.moviegalerysas.repositories.interfaces.IMovieRepository;
 import com.joaolucas.moviegalerysas.services.interfaces.IMovieServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,17 +19,18 @@ import java.util.List;
 public class MovieServices implements IMovieServices {
 
     @Autowired
-    MovieRepository movieRepository;
+    IMovieRepository movieRepository;
 
     @Autowired
     ObjectMapper objectMapper;
 
     @Autowired
-    Logger logger;
+    ILogger logger;
 
-    public MovieServices(MovieRepository movieRepository, ObjectMapper objectMapper){
+    public MovieServices(IMovieRepository movieRepository, ObjectMapper objectMapper, ILogger logger){
         this.movieRepository = movieRepository;
         this.objectMapper = objectMapper;
+        this.logger = logger;
     }
 
     public ArrayList<Movie> getPopularMovies(){

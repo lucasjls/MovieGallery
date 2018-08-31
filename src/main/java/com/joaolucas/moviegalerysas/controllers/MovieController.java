@@ -1,7 +1,7 @@
 package com.joaolucas.moviegalerysas.controllers;
 
 import com.joaolucas.moviegalerysas.models.Movie;
-import com.joaolucas.moviegalerysas.services.MovieServices;
+import com.joaolucas.moviegalerysas.services.interfaces.IMovieServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -12,9 +12,9 @@ import java.util.List;
 public class MovieController {
 
     @Autowired
-    MovieServices movieServices;
+    IMovieServices movieServices;
 
-    public MovieController(MovieServices movieServices){
+    public MovieController(IMovieServices movieServices){
         this.movieServices = movieServices;
     }
 
