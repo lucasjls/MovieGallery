@@ -12,7 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@RestController("/templates")
+@RestController
+@RequestMapping(value="/popularmovies")
 public class MovieController {
 
     @Autowired
@@ -27,8 +28,8 @@ public class MovieController {
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(value = "/popularmovies", method = RequestMethod.GET)
-    public List<Movie> getPopularMovies(){
+    @RequestMapping(method=RequestMethod.GET)
+    public List<Movie> findAll(){
         logger.info("getPopularMovies: Popular movies returned");
         return movieServices.getPopularMovies();
     }
