@@ -28,8 +28,13 @@ public class MovieController {
 
     @RequestMapping(method=RequestMethod.GET)
     public ResponseEntity<List<MovieDTO>> findAll(){
-        logger.info("getPopularMovies: Popular movies returned");
+        logger.info("MovieController: findAll: filmes sendo buscados ");
         List<MovieDTO> movies = movieServices.getPopularMovies();
+
+        if(movies.isEmpty()){
+            logger.info("MovieController: findAll: filmes não encontrados");
+        }
+
         return ResponseEntity.ok().body(movies);
     }
 

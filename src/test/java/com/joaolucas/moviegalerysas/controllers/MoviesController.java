@@ -4,7 +4,7 @@ import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-public class GetMoviesController {
+public class MoviesController {
 
     @Test
     public void GetPopularMoviesSuccessful(){
