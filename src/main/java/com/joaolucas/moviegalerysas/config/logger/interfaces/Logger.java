@@ -1,6 +1,6 @@
-package com.joaolucas.moviegalerysas.config.interfaces;
+package com.joaolucas.moviegalerysas.config.logger.interfaces;
 
-public interface ILogger {
+public interface Logger {
 
     void info(String message);
 
