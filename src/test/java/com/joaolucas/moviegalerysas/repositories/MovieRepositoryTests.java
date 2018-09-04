@@ -8,7 +8,7 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 @SpringBootTest
-public class MoviesRepository {
+public class MovieRepositoryTests {
 
     public static final String API_ROOT = "https://api.themoviedb.org/3";
 
