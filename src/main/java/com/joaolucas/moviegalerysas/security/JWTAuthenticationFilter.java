@@ -1,7 +1,7 @@
 package com.joaolucas.moviegalerysas.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.joaolucas.moviegalerysas.config.logger.interfaces.Logger;
+import com.joaolucas.moviegalerysas.config.logger.LoggerImpl;
 import com.joaolucas.moviegalerysas.dto.CredentialsDTO;
 import com.joaolucas.moviegalerysas.security.interfaces.JWTUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,7 @@ import java.util.ArrayList;
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
     @Autowired
-    private Logger logger;
+    private LoggerImpl logger;
 
     @Autowired
     private JWTUtil jwtUtil;

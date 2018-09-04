@@ -1,6 +1,6 @@
 package com.joaolucas.moviegalerysas.controllers;
 
-import com.joaolucas.moviegalerysas.config.logger.interfaces.Logger;
+import com.joaolucas.moviegalerysas.config.logger.LoggerImpl;
 import com.joaolucas.moviegalerysas.dto.MovieDTO;
 import com.joaolucas.moviegalerysas.services.interfaces.MovieServices;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,11 +19,10 @@ public class MovieController {
     private MovieServices movieServices;
 
     @Autowired
-    private Logger logger;
+    LoggerImpl logger;
 
-    public MovieController(MovieServices movieServices, Logger logger){
+    public MovieController(MovieServices movieServices){
         this.movieServices = movieServices;
-        this.logger = logger;
     }
 
     @RequestMapping(method=RequestMethod.GET)

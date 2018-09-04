@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.joaolucas.moviegalerysas.config.logger.interfaces.Logger;
+import com.joaolucas.moviegalerysas.config.logger.LoggerImpl;
 import com.joaolucas.moviegalerysas.domain.Movie;
 import com.joaolucas.moviegalerysas.dto.MovieDTO;
 import com.joaolucas.moviegalerysas.repositories.interfaces.MovieRepository;
@@ -27,13 +27,12 @@ public class MovieServicesImpl implements MovieServices {
     ObjectMapper objectMapper;
 
     @Autowired
-    Logger logger;
+    LoggerImpl logger;
 
-    public MovieServicesImpl(MovieRepository movieRepository, ObjectMapper objectMapper, Logger logger){
+    public MovieServicesImpl(MovieRepository movieRepository, ObjectMapper objectMapper){
         this.movieRepository = movieRepository;
         this.objectMapper = objectMapper;
         objectMapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
-        this.logger = logger;
     }
 
     public List<MovieDTO> getPopularMovies(){

@@ -1,7 +1,7 @@
 package com.joaolucas.moviegalerysas.repositories;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import com.joaolucas.moviegalerysas.config.logger.interfaces.Logger;
+import com.joaolucas.moviegalerysas.config.logger.LoggerImpl;
 import com.joaolucas.moviegalerysas.repositories.interfaces.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -14,14 +14,10 @@ public class MovieRepositoryImpl implements MovieRepository {
     private static final String baseUrl = "https://api.themoviedb.org/3";
 
     @Autowired
-    Logger logger;
+    LoggerImpl logger;
 
     @Value("${API_KEY}")
     private String API_KEY;
-
-    public MovieRepositoryImpl(Logger logger){
-        this.logger = logger;
-    }
 
     public JsonNode getPopularMovies(){
         logger.info("MovieRepository: getPopularMovies: ");
