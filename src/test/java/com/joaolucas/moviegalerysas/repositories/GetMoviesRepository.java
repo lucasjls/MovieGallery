@@ -32,4 +32,5 @@ public class GetMoviesRepository {
         JsonNode jsonNode = restTemplate.getForObject(apiUrl, JsonNode.class);
     }
 
+
 }

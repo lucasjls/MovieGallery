@@ -4,33 +4,34 @@ import com.joaolucas.moviegalerysas.config.interfaces.ILogger;
 import com.joaolucas.moviegalerysas.models.Movie;
 import com.joaolucas.moviegalerysas.services.interfaces.IMovieServices;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController("/templates")
+@RestController("/movies")
 public class MovieController {
 
-    @Autowired
-    IMovieServices movieServices;
+    private final IMovieServices movieServices;
+
+    private ILogger logger;
 
     @Autowired
-    ILogger logger;
-
     public MovieController(IMovieServices movieServices, ILogger logger){
         this.movieServices = movieServices;
         this.logger = logger;
     }
 
-    @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(value = "/popularmovies", method = RequestMethod.GET)
-    public List<Movie> getPopularMovies(){
+    @GetMapping("/")
+    public List<Movie> getAll(){
         logger.info("getPopularMovies: Popular movies returned");
         return movieServices.getPopularMovies();
+    }
+
+    @GetMapping("/{name}")
+    ResponseEntity<?> getMovie(@PathVariable String name){
+        System.out.println(name);
+        return ResponseEntity.ok(movieServices.findByName(name));
     }
 
 }
