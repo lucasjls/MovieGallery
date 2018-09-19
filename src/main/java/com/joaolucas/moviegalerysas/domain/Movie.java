@@ -1,11 +1,12 @@
-package com.joaolucas.moviegalerysas.models;
+package com.joaolucas.moviegalerysas.domain;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 
+import java.io.Serializable;
 import java.util.List;
 
 @JsonAutoDetect
-public class Movie {
+public class Movie implements Serializable {
 
     private String title;
     private String pathPoster;

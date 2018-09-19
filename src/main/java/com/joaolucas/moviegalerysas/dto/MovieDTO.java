@@ -1,4 +1,4 @@
 package com.joaolucas.moviegalerysas.dto;
 
-public class MovieDTO {
+public class MovieDTO{
 }

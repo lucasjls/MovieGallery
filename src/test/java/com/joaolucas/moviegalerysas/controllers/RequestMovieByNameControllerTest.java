@@ -14,9 +14,8 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.context.WebApplicationContext;
 
-import java.util.Optional;
-
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
@@ -44,14 +43,10 @@ public class RequestMovieByNameControllerTest {
     public void whenMovieIsFoundShouldReturn200StatusCode() throws Exception{
 
         String movieName = "Avengers";
-        when(movieServices.findByName(any(String.class))).thenReturn(getMovie());
+        when(movieServices.findByName(movieName)).thenReturn(new MovieDTO());
 
-        mockMvc.perform(get("/movies").param("name","Avanger")).andExpect(status().isOk());
+        mockMvc.perform(get("/movies").param("name",movieName)).andExpect(status().isOk());
 
-    }
-
-    private Optional<MovieDTO> getMovie() {
-        return Optional.of(new MovieDTO());
     }
 
 }

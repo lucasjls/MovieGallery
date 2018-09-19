@@ -1,23 +1,25 @@
 package com.joaolucas.moviegalerysas.controllers;
 
 import com.joaolucas.moviegalerysas.config.interfaces.ILogger;
-import com.joaolucas.moviegalerysas.models.Movie;
-import com.joaolucas.moviegalerysas.services.interfaces.IMovieServices;
+import com.joaolucas.moviegalerysas.domain.Movie;
+import com.joaolucas.moviegalerysas.dto.MovieDTO;
+import com.joaolucas.moviegalerysas.services.MovieServices;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import static org.springframework.http.HttpStatus.OK;
+
 @RestController("/movies")
 public class MovieController {
 
-    private final IMovieServices movieServices;
+    private final MovieServices movieServices;
 
     private ILogger logger;
 
     @Autowired
-    public MovieController(IMovieServices movieServices, ILogger logger){
+    public MovieController(MovieServices movieServices, ILogger logger){
         this.movieServices = movieServices;
         this.logger = logger;
     }
@@ -29,9 +31,9 @@ public class MovieController {
     }
 
     @GetMapping("/{name}")
-    ResponseEntity<?> getMovie(@PathVariable String name){
-        System.out.println(name);
-        return ResponseEntity.ok(movieServices.findByName(name));
+    @ResponseStatus(OK)
+    MovieDTO getMovie(@PathVariable String name) throws ClassNotFoundException{
+        return movieServices.findByName(name);
     }
 
 }

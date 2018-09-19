@@ -6,7 +6,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.joaolucas.moviegalerysas.config.interfaces.ILogger;
 import com.joaolucas.moviegalerysas.dto.MovieDTO;
-import com.joaolucas.moviegalerysas.models.Movie;
+import com.joaolucas.moviegalerysas.domain.Movie;
 import com.joaolucas.moviegalerysas.repositories.interfaces.IMovieRepository;
 import com.joaolucas.moviegalerysas.services.interfaces.IMovieServices;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,7 +52,7 @@ public class MovieServices implements IMovieServices {
     }
 
     @Override
-    public Optional<MovieDTO> findByName(String name) {
+    public MovieDTO findByName(String name) {
         return null;
     }
 
